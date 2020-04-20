@@ -1,6 +1,6 @@
 import React, { Component }  from 'react';
 import {connect} from "react-redux";
-import { Glyphicon, Panel, ListGroup, ListGroupItem } from 'react-bootstrap'
+import {  Col, Form, FormGroup, FormControl, ControlLabel, Button, Glyphicon, Panel, ListGroup, ListGroupItem } from 'react-bootstrap'
 import { Image } from 'react-bootstrap'
 import { withRouter } from "react-router-dom";
 import {fetchMovie} from "../actions/movieActions";
