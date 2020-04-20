@@ -4,7 +4,7 @@ import { Glyphicon, Panel, ListGroup, ListGroupItem } from 'react-bootstrap'
 import { Image } from 'react-bootstrap'
 import { withRouter } from "react-router-dom";
 import {fetchMovie} from "../actions/movieActions";
-
+import {submitReview} from "../actions/reviewActions";
 //support routing by creating a new component
 
 class Movie extends Component {
