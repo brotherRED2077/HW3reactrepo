@@ -8,8 +8,41 @@ import {submitReview} from "../actions/reviewActions";
 //support routing by creating a new component
 
 class Movie extends Component {
+    constructor(props) {
+        super(props);
+        this.updateReview = this.updateReview.bind(this);
+        this.postReview = this.postReview.bind(this);
 
-    componentDidMount() {
+        this.state = {
+            details: {
+                title: this.props.selectedMovie.title,
+                reviewerName: localStorage.getItem("username"),
+                quote: '',
+                rating: 0
+            }
+        };
+    }
+
+    updateReview(event) {
+        let updateReview = Object.assign({}, this.state.details);
+
+        updateReview[event.target.id] = event.target.value;
+        this.setState({
+            details: updateReview
+        });
+    }
+
+    postReview() {
+        const {dispatch} = this.props;
+        dispatch(submitReview(this.state.details))
+            .then(
+                () => {
+                    this.props.history.push('/');
+                });
+    }
+
+
+componentDidMount() {
         const {dispatch} = this.props;
         if (this.props.selectedMovie == null) {
             dispatch(fetchMovie(this.props.title));
@@ -71,8 +104,6 @@ class Movie extends Component {
                 </Form>
             );
         }
-
-
 
         const DetailInfo = ({currentMovie}) => {
             if (!currentMovie) { //if not could still be fetching the movie
