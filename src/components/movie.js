@@ -29,10 +29,50 @@ class Movie extends Component {
             return reviews.map((review, i) =>
                 <p key={i}>
                     <b>{review.reviewerName}</b> {review.quote}
-                    <Glyphicon glyph={'star'} /> {review.rating}
+                    <Glyphicon glyph={'star'}/> {review.rating}
                 </p>
             )
         }
+        // inspired from login form
+        const ReviewForm = ({currentMovie}) => {
+            return (
+                <Form horizontal key="reviewForm">
+                    <FormGroup controlId="rating" key="ratingFormGroup">
+                        <Col componentClass={ControlLabel} sm={3}>
+                            Rating (0-5)
+                        </Col>
+                        <Col sm={9}>
+                            <FormControl key="ratingFormControl" onChange={this.updateReviewDetails} value={this.state.details.rating} type="Number" min="0" max="5" />
+                        </Col>
+                    </FormGroup>
+
+                    <FormGroup controlId="quote">
+                        <Col componentClass={ControlLabel} sm={3}>
+                            Review
+                        </Col>
+                        <Col sm={9}>
+                            <FormControl onChange={this.updateReviewDetails} value={this.state.details.quote} type="text" placeholder="Review:" />
+                        </Col>
+                    </FormGroup>
+
+                    <FormGroup controlId="movieTitle">
+                        <FormControl type="hidden" value={currentMovie.title} onLoad={this.updateReviewDetails} />
+                    </FormGroup>
+
+                    <FormGroup controlId="reviewer">
+                        <FormControl type="hidden" value={localStorage.getItem("username")} onLoad={this.updateReviewDetails} />
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Col smOffset={2} sm={10}>
+                            <Button onClick={this.postReview}>Post Review</Button>
+                        </Col>
+                    </FormGroup>
+                </Form>
+            );
+        }
+
+
 
         const DetailInfo = ({currentMovie}) => {
             if (!currentMovie) { //if not could still be fetching the movie
