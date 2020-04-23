@@ -56,7 +56,7 @@ componentDidMount() {
                     <b>{actor.actorName}</b> {actor.characterName}
                 </p>
             )
-        }
+        };
 
         const ReviewInfo = ({reviews}) => {
             return reviews.map((review, i) =>
@@ -65,7 +65,7 @@ componentDidMount() {
                     <Glyphicon glyph={'star'}/> {review.rating}
                 </p>
             )
-        }
+        };
         // inspired from login form
         const Review = ({currentMovie}) => {
             return (
@@ -88,11 +88,11 @@ componentDidMount() {
                         </Col>
                     </FormGroup>
 
-                    <FormGroup controlId="movieTitle">
+                    <FormGroup controlId="movieName">
                         <FormControl type="hidden" value={currentMovie.title} onLoad={this.updateReviewDetails} />
                     </FormGroup>
 
-                    <FormGroup controlId="reviewer">
+                    <FormGroup controlId="reviewerName">
                         <FormControl type="hidden" value={localStorage.getItem("username")} onLoad={this.updateReviewDetails} />
                     </FormGroup>
 
@@ -103,7 +103,7 @@ componentDidMount() {
                     </FormGroup>
                 </Form>
             );
-        }
+        };
 
         const DetailInfo = ({currentMovie}) => {
             if (!currentMovie) { //if not could still be fetching the movie
@@ -121,7 +121,7 @@ componentDidMount() {
                   <Panel.Body><ReviewInfo reviews={currentMovie.movieReviews} /></Panel.Body>
               </Panel>
             );
-        }
+        };
 
         return (
             <div>
@@ -138,6 +138,6 @@ const mapStateToProps = (state, ownProps) => {
         selectedMovie: state.movie.selectedMovie,
         title: ownProps.match.params.title
     }
-}
+};
 
 export default withRouter(connect(mapStateToProps)(Movie));
