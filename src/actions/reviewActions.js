@@ -11,12 +11,12 @@ function reviewPosted(review){
 
 export function submitReview(review){
     const env = runtimeEnv();
-
     return dispatch => {
         return fetch(`${env.REACT_APP_API_URL}/review`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
+                'Content-Type': 'application/json',
                 'Authorization': localStorage.getItem('token')
             },
             body: JSON.stringify(review),
