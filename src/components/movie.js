@@ -70,30 +70,31 @@ componentDidMount() {
         const Review = ({currentMovie}) => {
             return (
                 <Form horizontal key="reviewForm">
-                    <FormGroup controlId="rating" key="ratingFormGroup">
-                        <Col componentClass={ControlLabel} sm={3}>
-                            Rating (0-5)
-                        </Col>
-                        <Col sm={9}>
-                            <FormControl key="ratingFormControl" onChange={this.updateReviewDetails} value={this.state.details.rating} type="Number" min="0" max="5" />
-                        </Col>
-                    </FormGroup>
+
 
                     <FormGroup controlId="quote">
                         <Col componentClass={ControlLabel} sm={3}>
                             Review
                         </Col>
                         <Col sm={9}>
-                            <FormControl onChange={this.updateReviewDetails} value={this.state.details.quote} type="text" placeholder="Review:" />
+                            <FormControl onChange={this.updateReview} value={this.state.details.quote} type="text" placeholder="Review:" />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup controlId="rating" key="ratingFormGroup">
+                        <Col componentClass={ControlLabel} sm={3}>
+                            Rating (0-5)
+                        </Col>
+                        <Col sm={9}>
+                            <FormControl key="ratingFormControl" onChange={this.updateReview} value={this.state.details.rating} type="Number" min="0" max="5" />
                         </Col>
                     </FormGroup>
 
-                    <FormGroup controlId="movieName">
-                        <FormControl type="hidden" value={currentMovie.title} onLoad={this.updateReviewDetails} />
+                    <FormGroup controlId="title">
+                        <FormControl type="hidden" value={currentMovie.title} onLoad={this.updateReview} />
                     </FormGroup>
 
                     <FormGroup controlId="reviewerName">
-                        <FormControl type="hidden" value={localStorage.getItem("username")} onLoad={this.updateReviewDetails} />
+                        <FormControl type="hidden" value={localStorage.getItem("username")} onLoad={this.updateReview} />
                     </FormGroup>
 
                     <FormGroup>
