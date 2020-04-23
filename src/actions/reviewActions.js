@@ -17,10 +17,9 @@ export function submitReview(review){
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json',
                 'Authorization': localStorage.getItem('token')
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(review),
             mode: 'cors'})
             .then( (response) => {
                 if (!response.ok) {
