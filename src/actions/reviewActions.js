@@ -11,14 +11,6 @@ function reviewPosted(review){
 
 export function submitReview(review){
     const env = runtimeEnv();
-    var formBody = [];
-    for(var property in review)
-    {
-        var encodedKey = encodeURIComponent(property);
-        var encodedValue = encodeURIComponent(review[property]);
-        formBody.push(encodedKey + "=" + encodedValue);
-    }
-    formBody = formBody.join("&");
 
     return dispatch => {
         return fetch(`${env.REACT_APP_API_URL}/review`, {
@@ -28,7 +20,7 @@ export function submitReview(review){
                 'Content-Type': 'application/json',
                 'Authorization': localStorage.getItem('token')
             },
-            body: formBody,
+            body: JSON.stringify(data),
             mode: 'cors'})
             .then( (response) => {
                 if (!response.ok) {
