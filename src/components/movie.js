@@ -67,7 +67,7 @@ componentDidMount() {
             )
         }
         // inspired from login form
-        const ReviewForm = ({currentMovie}) => {
+        const Review = ({currentMovie}) => {
             return (
                 <Form horizontal key="reviewForm">
                     <FormGroup controlId="rating" key="ratingFormGroup">
@@ -124,7 +124,10 @@ componentDidMount() {
         }
 
         return (
+            <div>
             <DetailInfo currentMovie={this.props.selectedMovie} />
+            <Review currentMovie={this.props.selectedMovie} />
+            </div>
         )
     }
 }
