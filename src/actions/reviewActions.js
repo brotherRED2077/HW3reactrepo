@@ -25,7 +25,7 @@ export function submitReview(review){
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+                'Content-Type': 'application/json',
                 'Authorization': localStorage.getItem('token')
             },
             body: formBody,
