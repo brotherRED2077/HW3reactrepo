@@ -62,7 +62,7 @@ class Movie extends Component {
             return reviews.map((review, i) =>
                 <p key={i}>
                     <b>{review.reviewerName}</b> {review.quote}
-                    <Glyphicon glyph={'star'}/> {review.rating}
+                    <Glyphicon glyph={'star'}/> {review.rateing}
                 </p>
             )
         };
