@@ -18,7 +18,7 @@ class Movie extends Component {
                 title: this.props.selectedMovie.title,
                 reviewerName: localStorage.getItem("username"),
                 quote: '',
-                rating: 0
+                rateing: 0
             }
         };
     }
