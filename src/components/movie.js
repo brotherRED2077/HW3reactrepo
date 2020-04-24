@@ -42,7 +42,7 @@ class Movie extends Component {
     }
 
 
-componentDidMount() {
+    componentDidMount() {
         const {dispatch} = this.props;
         if (this.props.selectedMovie == null) {
             dispatch(fetchMovie(this.props.title));
