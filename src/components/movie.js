@@ -73,19 +73,19 @@ class Movie extends Component {
 
 
                     <FormGroup controlId="quote">
-                        <Col componentClass={ControlLabel} sm={3}>
+                        <Col componentClass={ControlLabel} sm={2}>
                             Review
                         </Col>
                         <Col sm={9}>
-                            <FormControl onChange={this.updateReview} value={this.state.details.quote} type="text" placeholder="Review:" />
+                            <FormControl onChange={this.updateReview.bind(this)} value={this.state.details.quote} type="text" placeholder="Review:" />
                         </Col>
                     </FormGroup>
-                    <FormGroup controlId="rating" key="ratingFormGroup">
-                        <Col componentClass={ControlLabel} sm={3}>
+                    <FormGroup controlId="rating" >
+                        <Col componentClass={ControlLabel} sm={2}>
                             Rating (0-5)
                         </Col>
                         <Col sm={9}>
-                            <FormControl key="ratingFormControl" onChange={this.updateReview} value={this.state.details.rating} type="Number" min="0" max="5" />
+                            <FormControl key="ratingFormControl" onChange={this.updateReview.bind(this)} value={this.state.details.rating} type="Number" min="0" max="5" />
                         </Col>
                     </FormGroup>
 
