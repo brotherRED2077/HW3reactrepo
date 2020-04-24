@@ -80,7 +80,7 @@ class Movie extends Component {
                             <FormControl onChange={this.updateReview.bind(this)} value={this.state.details.quote} type="text" placeholder="Review:" />
                         </Col>
                     </FormGroup>
-                    <FormGroup controlId="rating" >
+                    <FormGroup controlId="rateing" >
                         <Col componentClass={ControlLabel} sm={2}>
                             Rating (0-5)
                         </Col>
