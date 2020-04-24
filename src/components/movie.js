@@ -67,9 +67,33 @@ class Movie extends Component {
             )
         };
         // inspired from login form
-        const Review = ({currentMovie}) => {
+
+
+
+
+        const DetailInfo = ({currentMovie}) => {
+            if (!currentMovie) { //if not could still be fetching the movie
+                return <div>Loading...</div>;
+            }
             return (
-                <Form horizontal key="reviewForm">
+              <Panel>
+                  <Panel.Heading>Movie Detail</Panel.Heading>
+                  <Panel.Body><Image className="image" src={currentMovie.imageURL} thumbnail /></Panel.Body>
+                  <ListGroup>
+                      <ListGroupItem>{currentMovie.title}</ListGroupItem>
+                      <ListGroupItem><ActorInfo actors={currentMovie.actors} /></ListGroupItem>
+                      <ListGroupItem><h4><Glyphicon glyph={'star'}/> {currentMovie.avgRating} </h4></ListGroupItem>
+                  </ListGroup>
+                  <Panel.Body><ReviewInfo reviews={currentMovie.movieReviews} /></Panel.Body>
+              </Panel>
+            );
+        };
+
+        return (
+            <div>
+            <DetailInfo currentMovie={this.props.selectedMovie} />
+
+            <Form horizontal key="reviewForm">
 
 
                     <FormGroup controlId="quote">
@@ -104,31 +128,7 @@ class Movie extends Component {
                         </Col>
                     </FormGroup>
                 </Form>
-            );
-        };
 
-        const DetailInfo = ({currentMovie}) => {
-            if (!currentMovie) { //if not could still be fetching the movie
-                return <div>Loading...</div>;
-            }
-            return (
-              <Panel>
-                  <Panel.Heading>Movie Detail</Panel.Heading>
-                  <Panel.Body><Image className="image" src={currentMovie.imageURL} thumbnail /></Panel.Body>
-                  <ListGroup>
-                      <ListGroupItem>{currentMovie.title}</ListGroupItem>
-                      <ListGroupItem><ActorInfo actors={currentMovie.actors} /></ListGroupItem>
-                      <ListGroupItem><h4><Glyphicon glyph={'star'}/> {currentMovie.avgRating} </h4></ListGroupItem>
-                  </ListGroup>
-                  <Panel.Body><ReviewInfo reviews={currentMovie.movieReviews} /></Panel.Body>
-              </Panel>
-            );
-        };
-
-        return (
-            <div>
-            <DetailInfo currentMovie={this.props.selectedMovie} />
-            <Review currentMovie={this.props.selectedMovie} />
             </div>
         )
     }
