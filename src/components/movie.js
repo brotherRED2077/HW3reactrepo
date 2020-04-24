@@ -95,7 +95,6 @@ class Movie extends Component {
 
             <Form horizontal key="reviewForm">
 
-
                     <FormGroup controlId="quote">
                         <Col componentClass={ControlLabel} sm={2}>
                             Review
@@ -115,7 +114,7 @@ class Movie extends Component {
                     </FormGroup>
 
                     <FormGroup controlId="title">
-                        <FormControl type="hidden" value={currentMovie.title} onLoad={this.updateReview} />
+                        <FormControl type="hidden" value={this.props.selected.Movie.title} onLoad={this.updateReview} />
                     </FormGroup>
 
                     <FormGroup controlId="reviewerName">
